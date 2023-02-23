@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
@@ -26,7 +27,7 @@ const ProductAll = () => {
         <Row>
           {productList?.map((menu) => (
             <Col lg={3}>
-              <ProductCard item={menu} />
+              <ProductCard item={menu} key={menu.id} />
             </Col>
           ))}
         </Row>
@@ -38,8 +39,5 @@ const ProductAll = () => {
 
 export default ProductAll;
 
-// const ProductCard = styled.div`
-//   :hover {
-//     width: 210px;
-//   }
-// `;
+// 상품 디테일 페이지를 눌렀을 때, 로그인이 안된 경우 로그인 페이지가 보인다.
+// 상품 디테일 페이지를 눌렀을 때, 로그인이 된 경우 상품 디테일 페이지가 보인다.
