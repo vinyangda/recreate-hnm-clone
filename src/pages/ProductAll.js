@@ -24,7 +24,7 @@ const ProductAll = () => {
       <NavBar />
       <Container>
         <Row>
-          {productList.map((menu) => (
+          {productList?.map((menu) => (
             <Col lg={3}>
               <ProductCard item={menu} />
             </Col>

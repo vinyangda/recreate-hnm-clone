@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const menuList = [
@@ -15,9 +16,15 @@ const NavBar = () => {
     "Sale",
     "지속가능성",
   ];
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <NavBox>
-      <LoginButton>
+      <LoginButton onClick={goToLogin}>
         {" "}
         <FontAwesomeIcon icon={faUser} />
         <div>Login</div>
@@ -72,6 +79,7 @@ const LoginButton = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 20px;
+  cursor: pointer;
 `;
 
 const Img = styled.img`
