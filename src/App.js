@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 import Login from "./pages/Login";
 import ProductAll from "./pages/ProductAll";
@@ -12,17 +13,20 @@ function App() {
     console.log("??", authenticate);
   }, [authenticate]);
   return (
-    <Routes>
-      <Route path="/" element={<ProductAll />} />
-      <Route
-        path="/product/:id"
-        element={<PrivateRoute authenticate={authenticate} />}
-      />
-      <Route
-        path="/login"
-        element={<Login setAuthenticate={setAuthenticate} />}
-      />
-    </Routes>
+    <div>
+      <NavBar authenticate={authenticate} />
+      <Routes>
+        <Route path="/" element={<ProductAll />} />
+        <Route
+          path="/product/:id"
+          element={<PrivateRoute authenticate={authenticate} />}
+        />
+        <Route
+          path="/login"
+          element={<Login setAuthenticate={setAuthenticate} />}
+        />
+      </Routes>
+    </div>
   );
 }
 

@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
 import ProductCard from "../components/ProductCard";
 
 const ProductAll = () => {
   const [productList, setProductList] = useState();
+  const [query, setQuery] = useSearchParams();
 
   const getProducts = async () => {
-    let url = `http://localhost:5003/products`;
+    let searchQuery = query.get("q") || "";
+    console.log(searchQuery, "??");
+    //query값을 변환이 되는지 확인 받아오는지 확인한다.
+    let url = `http://localhost:5003/products?q=${searchQuery}`;
     let res = await fetch(url);
     let data = await res.json();
     setProductList(data);
   };
+
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [query]);
 
   return (
     <div>
-      <NavBar />
       <Container>
         <Row>
           {productList?.map((menu) => (

@@ -8,6 +8,7 @@ const ProductCard = ({ item, key }) => {
   const goToProduct = () => {
     navigate(`/product/${item.id}`);
   };
+
   return (
     <div onClick={goToProduct} key={key}>
       <Img src={item?.img} />

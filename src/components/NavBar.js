@@ -5,7 +5,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ authenticate }) => {
   const menuList = [
     "여성",
     "남성",
@@ -18,8 +18,23 @@ const NavBar = () => {
   ];
   const navigate = useNavigate();
 
+  const goToHome = () => {
+    navigate("/");
+  };
+
   const goToLogin = () => {
     navigate("/login");
+  };
+  const search = (event) => {
+    if (event.key === "Enter") {
+      console.log("enter");
+      //입력한 검색어를 읽어와서
+      let keyword = event.target.value;
+      console.log("key", keyword);
+      //url을 바꿔준다
+      navigate(`/?q=${keyword}`);
+      //url만 바뚸듐...
+    }
   };
 
   return (
@@ -27,10 +42,13 @@ const NavBar = () => {
       <LoginButton onClick={goToLogin}>
         {" "}
         <FontAwesomeIcon icon={faUser} />
-        <div>Login</div>
+        <div>{authenticate === false ? "Login" : "Logout"}</div>
       </LoginButton>
       <div className="nav-section">
-        <Img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/2560px-H%26M-Logo.svg.png" />
+        <Img
+          onClick={goToHome}
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/2560px-H%26M-Logo.svg.png"
+        />
       </div>
       <div className="nav-menu">
         <ul className="menu-list">
@@ -41,7 +59,7 @@ const NavBar = () => {
 
         <div className="nav-search">
           <FontAwesomeIcon icon={faSearch} />
-          <input type="text" />
+          <input type="text" onKeyPress={(event) => search(event)} />
         </div>
       </div>
     </NavBox>
