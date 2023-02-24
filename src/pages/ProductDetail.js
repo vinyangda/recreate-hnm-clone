@@ -8,7 +8,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState();
 
   const getProduct = async () => {
-    let url = `http://localhost:5003/products/${id}`; //API호출을 한다 id값은 동적인 값으로 바뀐다.
+    let url = `https://my-json-server.typicode.com/vinyangda/recreate-hnm-clone/products/${id}`; //API호출을 한다 id값은 동적인 값으로 바뀐다.
     let res = await fetch(url);
     let data = await res.json();
     setProduct(data);

@@ -42,7 +42,13 @@ const NavBar = ({ authenticate }) => {
       <LoginButton onClick={goToLogin}>
         {" "}
         <FontAwesomeIcon icon={faUser} />
-        <div>{authenticate === false ? "Login" : "Logout"}</div>
+        <div
+          onClick={
+            authenticate === true ? goToHome && authenticate == false : null
+          }
+        >
+          {authenticate === false ? "Login" : "Logout"}
+        </div>
       </LoginButton>
       <div className="nav-section">
         <Img

@@ -14,7 +14,8 @@ const ProductAll = () => {
     let searchQuery = query.get("q") || "";
     console.log(searchQuery, "??");
     //query값을 변환이 되는지 확인 받아오는지 확인한다.
-    let url = `http://localhost:5003/products?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/vinyangda/recreate-hnm-clone/products?q=${searchQuery}`;
+    //배포 주의사항 현제 url은 내 로컬에서만 적용되고 있기 때문에 이대로 배포할 경우 다른사람에게는 보여지지 않는다
     let res = await fetch(url);
     let data = await res.json();
     setProductList(data);
