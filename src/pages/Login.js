@@ -6,7 +6,6 @@ const Login = ({ setAuthenticate }) => {
   const navigate = useNavigate();
   const loginUser = (event) => {
     event.preventDefault();
-
     setAuthenticate(true);
     navigate("/");
     console.log("loginUser");
