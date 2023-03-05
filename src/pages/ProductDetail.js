@@ -12,7 +12,7 @@ const ProductDetail = () => {
     let res = await fetch(url);
     let data = await res.json();
     setProduct(data);
-    console.log(data);
+    // console.log(data);
   };
   useEffect(() => {
     getProduct();
