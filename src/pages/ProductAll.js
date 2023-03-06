@@ -11,7 +11,14 @@ import ProductCard from "../components/ProductCard";
 const ProductAll = () => {
   //useState()이제 사용안함
   //const [productList, setProductList] = useState();
-  const productList = useSelector((state) => state.productList);
+
+  //const productList = useSelector((state) => state.productList);
+  //**문제가 발생 한 이유 */
+  //다짜고짜 useSelector에서 state.productList에 있는 거 내놔! 라고 하고있기 때문에
+  //so product 안에 있는 거 내놔
+  //라고 정확히 명시한다
+  const productList = useSelector((state) => state.product.productList);
+
   const [query, setQuery] = useSearchParams();
   const dispatch = useDispatch();
 
