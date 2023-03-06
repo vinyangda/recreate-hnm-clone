@@ -8,23 +8,17 @@ import ProductDetail from "./pages/ProductDetail";
 import PrivateRoute from "./route/PrivateRoute";
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false); // true면 로그링니 됨
-  useEffect(() => {
-    console.log("??", authenticate);
-  }, [authenticate]);
+  // const [authenticate, setAuthenticate] = useState(false); // true면 로그링니 됨
+  // useEffect(() => {
+  //   console.log("??", authenticate);
+  // }, [authenticate]);
   return (
     <div>
-      <NavBar authenticate={authenticate} />
+      <NavBar />
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route
-          path="/product/:id"
-          element={<PrivateRoute authenticate={authenticate} />}
-        />
-        <Route
-          path="/login"
-          element={<Login setAuthenticate={setAuthenticate} />}
-        />
+        <Route path="/product/:id" element={<PrivateRoute />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
@@ -42,3 +36,5 @@ export default App;
 //combineReducer로 묶인 reducer들은 객체형태로 반환되어 사용된다. (이름을 지어주면 편리함!)
 //
 //useSelector() 함수를 사용하여 받아 올 때 useSelector(state.reducer객체.정보) 순으로 가져오면 된다
+//
+//>>>>redux tool kit
