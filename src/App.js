@@ -38,3 +38,5 @@ export default App;
 //useSelector() 함수를 사용하여 받아 올 때 useSelector(state.reducer객체.정보) 순으로 가져오면 된다
 //
 //>>>>redux tool kit
+
+//key : 0b19239f3136239b18c1dfc58309a223
